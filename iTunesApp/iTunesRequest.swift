@@ -50,11 +50,23 @@ public class iTunesRequest: NSObject, NSURLSessionDelegate {
             } else if let httpResponse = response as? NSHTTPURLResponse {
                 if httpResponse.statusCode == 200 {
                     print(response?.description)
+                    self.fetchTunes(data!)
                 }
             }
         })
         dataTask?.resume()
        
+    }
+    func fetchTunes(response : NSData) {
+        var tuneDictionary : NSDictionary
+        do {
+            tuneDictionary = try NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions()) as! NSDictionary
+            print(tuneDictionary)
+            
+            
+        } catch {
+            print(error)
+        }
     }
     
     func requestURL() -> NSURL {

@@ -26,14 +26,42 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="25D-vW-veA">
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XMe-wY-DAG">
+                                <rect key="frame" x="268" y="103" width="64" height="30"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="search:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LVK-4C-ela"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="188" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="25D-vW-veA">
                                 <rect key="frame" x="0.0" y="150" width="600" height="450"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="iTuneCell" rowHeight="188" id="sZN-6Q-FCX" customClass="iTuneTableViewCell" customModule="iTunesApp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="600" height="188"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sZN-6Q-FCX" id="M5O-Dx-lm7">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="187"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4V9-ip-cIf">
+                                                    <rect key="frame" x="236" y="-3" width="128" height="128"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tmR-0f-luA">
+                                                    <rect key="frame" x="236" y="133" width="128" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="preview" destination="4V9-ip-cIf" id="Yxl-jt-r8m"/>
+                                            <outlet property="titleLabel" destination="tmR-0f-luA" id="eYX-f4-K5u"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2tv-w9-C0T">
-                                <rect key="frame" x="0.0" y="150" width="600" height="450"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.50916999113475181" colorSpace="calibratedRGB"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
@@ -44,8 +72,8 @@
                     </view>
                     <connections>
                         <outlet property="bgImageView" destination="gRc-f5-mku" id="6V3-wT-nbo"/>
-                        <outlet property="bgView" destination="2tv-w9-C0T" id="6p9-10-yUZ"/>
                         <outlet property="resultsTableView" destination="25D-vW-veA" id="bub-NL-iZP"/>
+                        <outlet property="searchBtn" destination="XMe-wY-DAG" id="tuh-ku-iXR"/>
                         <outlet property="searchInput" destination="ztg-WC-ISC" id="1uM-3K-RLg"/>
                     </connections>
                 </viewController>

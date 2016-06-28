@@ -8,20 +8,85 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var searchInput: UITextField!
-    @IBOutlet weak var resultsTableView: UITableView!
-    @IBOutlet weak var bgImageView: UIImageView!    
-    @IBOutlet weak var bgView: UIView!
+    var iTunes: [iTune] = []
+    var searchText : String? = "Search text" {
+        didSet {
+            searchInput?.text = searchText
+            //iTunes.removeAll()
+            resultsTableView.reloadData()
+        }
+    }
+
+    @IBOutlet weak var searchInput: UITextField! {
+        didSet {
+            searchInput.delegate = self
+            searchInput.text = self.searchText
+        }
+    }
+    @IBOutlet weak var resultsTableView: UITableView! {
+        didSet {
+            resultsTableView.delegate = self
+            resultsTableView.dataSource = self
+        }
+    }
+    @IBOutlet weak var bgImageView: UIImageView!
+    @IBOutlet weak var searchBtn: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bgImageView.image = UIImage(named: "mesh1")
-        resultsTableView.backgroundColor = UIColor.clearColor()
-        let parameters = ["term": "johnson"]
-        let request = iTunesRequest("", parameters)
-        request.performRequest()
+        resultsTableView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
+        blurEffect()
+        
     }
+    
+    @IBAction func search(sender: AnyObject) {
+        if let input = searchInput.text {
+            let parameters = ["term": input]
+            let request = iTunesRequest("", parameters)
+            request.performRequest()
+        }
+    }
+    
+    func blurEffect() {
+        let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = resultsTableView.frame
+        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        view.insertSubview(blurEffectView, atIndex: 1)
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == searchInput {
+            textField.resignFirstResponder()
+            searchText = textField.text!
+        }
+        return true
+    }
+    
+    // MARK: UITableViewDataSource
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return iTunes.count
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    private struct Storyboard {
+        static let CellReuseIdentifier = "iTune"
+    }
+    
+     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! iTuneTableViewCell
+        
+        //cell configuration
+        cell.tune = iTunes[indexPath.row]
+        return cell
+    }
+
 }
