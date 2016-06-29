@@ -10,12 +10,10 @@ import UIKit
 
 class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
 
-    var iTunes: [iTune] = []
+    var iTunes = [iTune]()
     var searchText : String? = "Search text" {
         didSet {
             searchInput?.text = searchText
-            //iTunes.removeAll()
-            resultsTableView.reloadData()
         }
     }
 
@@ -47,10 +45,19 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         if let input = searchInput.text {
             let parameters = ["term": input]
             let request = iTunesRequest("", parameters)
-            request.performRequest()
+            request.performRequest { (fetchedTunes) -> Void in
+                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                    if fetchedTunes.count > 0 {
+                        self.iTunes = fetchedTunes
+                        self.resultsTableView.reloadData()
+                    }
+                    
+                })
+            }
+
         }
     }
-    
+
     func blurEffect() {
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
@@ -70,15 +77,15 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
     // MARK: UITableViewDataSource
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return iTunes.count
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return iTunes.count
+    }
+    
     private struct Storyboard {
-        static let CellReuseIdentifier = "iTune"
+        static let CellReuseIdentifier = "iTuneCell"
     }
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

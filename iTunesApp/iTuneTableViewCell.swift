@@ -12,6 +12,8 @@ class iTuneTableViewCell: UITableViewCell {
     
     @IBOutlet weak var preview: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var trackPrice: UILabel!
+    @IBOutlet weak var albumPrice: UILabel!
     
     var tune : iTune? {
         didSet {
@@ -20,12 +22,16 @@ class iTuneTableViewCell: UITableViewCell {
     }
     
     func updateUI () {
+        self.titleLabel.textColor = UIColor.grayColor()
+        self.backgroundColor = UIColor.clearColor()
         preview?.image = nil
         titleLabel?.text = nil
         
         if let tune = self.tune {
-            self.titleLabel.text = tune.trackName
             
+            self.titleLabel.text = tune.artistName
+            self.trackPrice.text = String(tune.trackPrice)
+            self.albumPrice.text = String(tune.collectionPrice)
             if let artworkURL = self.tune?.artworkUrl {
                 
                 //mainThread

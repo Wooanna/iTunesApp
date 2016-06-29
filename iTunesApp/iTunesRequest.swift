@@ -12,7 +12,8 @@ public class iTunesRequest: NSObject, NSURLSessionDelegate {
     
     public var requestType: String
     public var parameters = Dictionary<String, String>()
-    public var responseData : NSMutableData = NSMutableData()
+    public var tunesArray : [iTune] = []
+    var data : NSData?
     // designated initializer
     public init(_ requestType: String, _ parameters: Dictionary<String, String> = [:]) {
         self.requestType = requestType
@@ -33,14 +34,17 @@ public class iTunesRequest: NSObject, NSURLSessionDelegate {
         static let Language = "lang"
         static let Explicit = "explicit"
         static let Version = "version"
+        static let ArtistName = "artistName"
+        static let ArtworkURL = "artworkUrl100"
+        static let CollectionPrice = "collectionPrice"
+        static let TrackPrice = "trackPrice"
     }
 
-    func performRequest() {
+    func performRequest(handler: ([iTune]) -> Void) {
         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration(), delegate: self, delegateQueue: nil)
         var dataTask: NSURLSessionDataTask?
         dataTask = session.dataTaskWithURL(requestURL(), completionHandler: { (data, response, error) in
-            
             dispatch_async(dispatch_get_main_queue()) {
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
             }
@@ -49,24 +53,42 @@ public class iTunesRequest: NSObject, NSURLSessionDelegate {
                 print(error.localizedDescription)
             } else if let httpResponse = response as? NSHTTPURLResponse {
                 if httpResponse.statusCode == 200 {
-                    print(response?.description)
-                    self.fetchTunes(data!)
+                    print(data!)
+                    self.fetchTunes(data!, handler: handler)
+                   
                 }
             }
+
         })
         dataTask?.resume()
-       
+        
     }
-    func fetchTunes(response : NSData) {
-        var tuneDictionary : NSDictionary
+    
+    func fetchTunes(data : NSData, handler: ([iTune]) -> Void) {
         do {
-            tuneDictionary = try NSJSONSerialization.JSONObjectWithData(response, options: NSJSONReadingOptions()) as! NSDictionary
-            print(tuneDictionary)
-            
-            
+            let tuneDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions()) as! NSDictionary
+            if let results : Array<NSDictionary> = tuneDictionary["results"] as? Array<NSDictionary> {
+                for result in results {
+                    let tune : iTune = iTune()
+                    tune.artistName = result[iTunesKey.ArtistName] as? String
+                    if let artworkURL = result[iTunesKey.ArtworkURL] as? String {
+                        tune.artworkUrl = NSURL(string: artworkURL)
+                    }
+                    tune.country = result[iTunesKey.Country] as? String
+                    if let collectionPrice = result[iTunesKey.CollectionPrice] as? Double {
+                    tune.collectionPrice = collectionPrice
+                    }
+                    if let trackPrice = result[iTunesKey.TrackPrice] as? Double {
+                        tune.trackPrice = trackPrice
+                    }
+                    tunesArray.append(tune)
+                }
+            }
+           handler(tunesArray)
         } catch {
             print(error)
         }
+
     }
     
     func requestURL() -> NSURL {
