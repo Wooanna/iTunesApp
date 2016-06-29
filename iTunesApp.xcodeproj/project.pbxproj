@@ -17,6 +17,7 @@
 		EFE9FDDB1D2167E800A0BFD8 /* iTunesRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9FDDA1D2167E800A0BFD8 /* iTunesRequest.swift */; };
 		EFE9FDDD1D22805900A0BFD8 /* iTune.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9FDDC1D22805900A0BFD8 /* iTune.swift */; };
 		EFE9FDDF1D2293F700A0BFD8 /* iTuneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9FDDE1D2293F700A0BFD8 /* iTuneTableViewCell.swift */; };
+		EFE9FDE11D23D3F600A0BFD8 /* BlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9FDE01D23D3F600A0BFD8 /* BlurView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		EFE9FDDA1D2167E800A0BFD8 /* iTunesRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTunesRequest.swift; sourceTree = "<group>"; };
 		EFE9FDDC1D22805900A0BFD8 /* iTune.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTune.swift; sourceTree = "<group>"; };
 		EFE9FDDE1D2293F700A0BFD8 /* iTuneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = iTuneTableViewCell.swift; sourceTree = "<group>"; };
+		EFE9FDE01D23D3F600A0BFD8 /* BlurView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlurView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +137,7 @@
 				EFE9FDAF1D21558700A0BFD8 /* LaunchScreen.storyboard */,
 				EFE9FDAA1D21558700A0BFD8 /* Main.storyboard */,
 				EFE9FDDE1D2293F700A0BFD8 /* iTuneTableViewCell.swift */,
+				EFE9FDE01D23D3F600A0BFD8 /* BlurView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				EFE9FDA71D21558700A0BFD8 /* AppDelegate.swift in Sources */,
 				EFE9FDDD1D22805900A0BFD8 /* iTune.swift in Sources */,
 				EFE9FDDF1D2293F700A0BFD8 /* iTuneTableViewCell.swift in Sources */,
+				EFE9FDE11D23D3F600A0BFD8 /* BlurView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

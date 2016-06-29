@@ -8,12 +8,14 @@
 
 import UIKit
 
-class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDelegate, UITableViewDataSource {
+class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var iTunes = [iTune]()
     var searchText : String? = "Search text" {
         didSet {
             searchInput?.text = searchText
+            iTunes.removeAll()
+            resultsCollection.reloadData()
         }
     }
 
@@ -23,45 +25,47 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
             searchInput.text = self.searchText
         }
     }
-    @IBOutlet weak var resultsTableView: UITableView! {
+    
+    @IBOutlet weak var resultsCollection: UICollectionView! {
         didSet {
-            resultsTableView.delegate = self
-            resultsTableView.dataSource = self
+            resultsCollection.delegate = self
+            resultsCollection.dataSource = self
         }
     }
+    
     @IBOutlet weak var bgImageView: UIImageView!
     @IBOutlet weak var searchBtn: UIButton!
     
+    var layout = UICollectionViewFlowLayout()
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         bgImageView.image = UIImage(named: "mesh1")
-        resultsTableView.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
+        resultsCollection.backgroundColor = UIColor.clearColor()
         blurEffect()
-        
     }
     
     @IBAction func search(sender: AnyObject) {
-        if let input = searchInput.text {
+                if let input = searchInput.text {
             let parameters = ["term": input]
             let request = iTunesRequest("", parameters)
             request.performRequest { (fetchedTunes) -> Void in
                 dispatch_async(dispatch_get_main_queue(), { () -> Void in
                     if fetchedTunes.count > 0 {
                         self.iTunes = fetchedTunes
-                        self.resultsTableView.reloadData()
+                        self.resultsCollection.reloadData()
                     }
                     
                 })
             }
-
         }
     }
 
     func blurEffect() {
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
-        blurEffectView.frame = resultsTableView.frame
+        let frame = CGRect(x: resultsCollection.frame.minX, y: resultsCollection.frame.minY-75, width: resultsCollection.frame.width, height: resultsCollection.frame.width)
+        let blurEffectView = BlurView(effect: blurEffect, frame: frame)
         blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
         view.insertSubview(blurEffectView, atIndex: 1)
     }
@@ -74,13 +78,14 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         return true
     }
     
-    // MARK: UITableViewDataSource
+    // MARK: UICollectionViewDataSource
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+   
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return iTunes.count
     }
     
@@ -88,12 +93,26 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UITableViewDe
         static let CellReuseIdentifier = "iTuneCell"
     }
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! iTuneTableViewCell
-        
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+               let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! iTuneTableViewCell
         //cell configuration
         cell.tune = iTunes[indexPath.row]
         return cell
+
+    }
+    
+    // MARK: UICollectionViewFlowLayoutDelegate
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSize(width: 130, height: 130)
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 2
+    }
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
+        return 5
     }
 
 }

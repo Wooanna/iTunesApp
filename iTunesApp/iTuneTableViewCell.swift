@@ -8,12 +8,14 @@
 
 import UIKit
 
-class iTuneTableViewCell: UITableViewCell {
+class iTuneTableViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var preview: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+
     @IBOutlet weak var trackPrice: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var albumPrice: UILabel!
+    @IBOutlet weak var preview: UIImageView!
+    
     
     var tune : iTune? {
         didSet {
@@ -23,15 +25,28 @@ class iTuneTableViewCell: UITableViewCell {
     
     func updateUI () {
         self.titleLabel.textColor = UIColor.grayColor()
-        self.backgroundColor = UIColor.clearColor()
+        self.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.1)
+        self.trackPrice.textColor = UIColor.grayColor()
+        self.trackPrice.font = UIFont(name: "AvenirNext-UltraLightItalic", size: 11)
+        self.albumPrice.textColor = UIColor.grayColor()
+        self.albumPrice.font = UIFont(name: "AvenirNext-UltraLightItalic", size: 11)
+        
         preview?.image = nil
         titleLabel?.text = nil
+        trackPrice.text = "N/A"
+        albumPrice.text = "N/A"
         
         if let tune = self.tune {
             
             self.titleLabel.text = tune.artistName
-            self.trackPrice.text = String(tune.trackPrice)
-            self.albumPrice.text = String(tune.collectionPrice)
+            if let trackPrice = tune.trackPrice {
+                self.trackPrice.text = "\(trackPrice)"
+            }
+            
+            if let albumPrice = tune.collectionPrice {
+                self.albumPrice.text = "\(albumPrice)"
+            }
+            
             if let artworkURL = self.tune?.artworkUrl {
                 
                 //mainThread
