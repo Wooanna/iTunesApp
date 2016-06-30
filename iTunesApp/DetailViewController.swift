@@ -45,6 +45,8 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
         }
     }
     
+    @IBOutlet weak var country: UILabel!
+    
     public var artworkPreviewURL : NSURL! {
         didSet {
             let qos = Int(QOS_CLASS_USER_INITIATED.rawValue)

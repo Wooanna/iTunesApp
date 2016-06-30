@@ -192,6 +192,12 @@
                                     <constraint firstAttribute="width" secondItem="gtn-Yo-qkx" secondAttribute="height" multiplier="1:1" id="oTK-Wh-X1V"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5f-eA-8tu">
+                                <rect key="frame" x="20" y="467" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -203,10 +209,13 @@
                             <constraint firstAttribute="trailingMargin" secondItem="lbH-34-xXf" secondAttribute="trailing" id="838-vs-9ym"/>
                             <constraint firstItem="ivG-8y-XEd" firstAttribute="leading" secondItem="bh2-mH-92Y" secondAttribute="leading" id="BsV-F0-0eD"/>
                             <constraint firstItem="tzR-Wy-V9L" firstAttribute="top" secondItem="ivG-8y-XEd" secondAttribute="bottom" constant="15" id="F98-Lc-VPJ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="E5f-eA-8tu" secondAttribute="trailing" id="Fer-4R-MCt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="gtn-Yo-qkx" secondAttribute="trailing" id="IEf-Zg-Hay"/>
                             <constraint firstItem="ivG-8y-XEd" firstAttribute="leading" secondItem="gtn-Yo-qkx" secondAttribute="trailing" constant="-70" id="Jtv-rR-SJJ"/>
                             <constraint firstItem="1I8-he-myY" firstAttribute="top" secondItem="lbH-34-xXf" secondAttribute="bottom" constant="141" id="NPy-Of-nUO"/>
+                            <constraint firstItem="E5f-eA-8tu" firstAttribute="top" secondItem="lbH-34-xXf" secondAttribute="bottom" constant="8" id="Oku-BW-Xoc"/>
                             <constraint firstItem="gtn-Yo-qkx" firstAttribute="centerY" secondItem="bh2-mH-92Y" secondAttribute="centerY" id="QWq-51-nHF"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="E5f-eA-8tu" secondAttribute="leading" id="RwA-0U-WBt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tzR-Wy-V9L" secondAttribute="trailing" id="Ss0-FC-ef6"/>
                             <constraint firstAttribute="leadingMargin" secondItem="cI1-YC-ZyQ" secondAttribute="leading" id="arD-xg-8n9"/>
                             <constraint firstItem="ivG-8y-XEd" firstAttribute="centerX" secondItem="tzR-Wy-V9L" secondAttribute="centerX" id="g6c-hP-L0n"/>
@@ -239,6 +248,7 @@
                         <outlet property="artworkPreview" destination="ivG-8y-XEd" id="Jp6-YC-BPz"/>
                         <outlet property="collectionName" destination="tzR-Wy-V9L" id="vqu-F9-TlN"/>
                         <outlet property="collectionPrice" destination="cI1-YC-ZyQ" id="H2g-kc-gNE"/>
+                        <outlet property="country" destination="E5f-eA-8tu" id="o5g-fW-zEs"/>
                         <outlet property="favIcon" destination="gtn-Yo-qkx" id="E4W-wS-jDb"/>
                         <outlet property="trackPrice" destination="lbH-34-xXf" id="Rj6-L2-uGN"/>
                     </connections>

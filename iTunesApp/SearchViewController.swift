@@ -79,8 +79,8 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
                     tuneDetailVC.tune = tune
                     tuneDetailVC.artistName.text = tune.artistName
                     tuneDetailVC.collectionName.text = tune.collectionName
-                    tuneDetailVC.collectionPrice.text = "\(tune.collectionPrice!)"
-                    tuneDetailVC.trackPrice.text = "\(tune.trackPrice!)"
+                    tuneDetailVC.collectionPrice.text = "\(tune.collectionPrice!)\(tune.currency!)"
+                    tuneDetailVC.trackPrice.text = "\(tune.trackPrice!)\(tune.currency!)"
                     tuneDetailVC.artworkPreviewURL = tune.artworkUrl600
                 }
             }
