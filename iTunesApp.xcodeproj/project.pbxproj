@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EFA810E91D25191700292B54 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA810E81D25191700292B54 /* DetailViewController.swift */; };
 		EFE9FDA71D21558700A0BFD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9FDA61D21558700A0BFD8 /* AppDelegate.swift */; };
 		EFE9FDAC1D21558700A0BFD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE9FDAA1D21558700A0BFD8 /* Main.storyboard */; };
 		EFE9FDAE1D21558700A0BFD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFE9FDAD1D21558700A0BFD8 /* Assets.xcassets */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EFA810E81D25191700292B54 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		EFE9FDA31D21558700A0BFD8 /* iTunesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE9FDA61D21558700A0BFD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFE9FDAB1D21558700A0BFD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				EFE9FDD71D215E4C00A0BFD8 /* SearchViewController.swift */,
+				EFA810E81D25191700292B54 /* DetailViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -306,6 +309,7 @@
 				EFE9FDDD1D22805900A0BFD8 /* iTune.swift in Sources */,
 				EFE9FDDF1D2293F700A0BFD8 /* iTuneTableViewCell.swift in Sources */,
 				EFE9FDE11D23D3F600A0BFD8 /* BlurView.swift in Sources */,
+				EFA810E91D25191700292B54 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -532,6 +536,7 @@
 				EFE9FDCD1D21558700A0BFD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EFE9FDCE1D21558700A0BFD8 /* Build configuration list for PBXNativeTarget "iTunesAppTests" */ = {
 			isa = XCConfigurationList;
@@ -540,6 +545,7 @@
 				EFE9FDD01D21558700A0BFD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		EFE9FDD11D21558700A0BFD8 /* Build configuration list for PBXNativeTarget "iTunesAppUITests" */ = {
 			isa = XCConfigurationList;
@@ -548,6 +554,7 @@
 				EFE9FDD31D21558700A0BFD8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

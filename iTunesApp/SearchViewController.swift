@@ -14,8 +14,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
     var searchText : String? = "Search text" {
         didSet {
             searchInput?.text = searchText
-            iTunes.removeAll()
-            resultsCollection.reloadData()
         }
     }
 
@@ -33,21 +31,28 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
         }
     }
     
-    @IBOutlet weak var bgImageView: UIImageView!
-    @IBOutlet weak var searchBtn: UIButton!
+    @IBOutlet weak var searchBtn: UIButton! {
+        didSet {
+            searchBtn.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0.2)
+            searchBtn.layer.cornerRadius = searchBtn.frame.width/2
+        }
+    }
     
-    var layout = UICollectionViewFlowLayout()
-
+    var blurEffectView : BlurView! = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        let bgImageView = UIImageView(frame: self.view.frame)
         bgImageView.image = UIImage(named: "mesh1")
+        self.view.insertSubview(bgImageView, atIndex: 0)
+        bgImageView.contentMode = UIViewContentMode.ScaleAspectFill
+       
         resultsCollection.backgroundColor = UIColor.clearColor()
         blurEffect()
     }
     
     @IBAction func search(sender: AnyObject) {
-                if let input = searchInput.text {
+                if let input = searchInput.text?.stringByReplacingOccurrencesOfString(" ", withString: "+") {
             let parameters = ["term": input]
             let request = iTunesRequest("", parameters)
             request.performRequest { (fetchedTunes) -> Void in
@@ -64,10 +69,11 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
 
     func blurEffect() {
         let blurEffect = UIBlurEffect(style: UIBlurEffectStyle.Light)
-        let frame = CGRect(x: resultsCollection.frame.minX, y: resultsCollection.frame.minY-75, width: resultsCollection.frame.width, height: resultsCollection.frame.width)
-        let blurEffectView = BlurView(effect: blurEffect, frame: frame)
-        blurEffectView.autoresizingMask = [.FlexibleWidth, .FlexibleHeight]
+        let frame = CGRect(x: 0, y: 100, width: self.view.frame.width, height: self.view.frame.height - 100)
+        self.blurEffectView = BlurView(effect: blurEffect, frame: frame)
+       
         view.insertSubview(blurEffectView, atIndex: 1)
+        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -78,6 +84,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
         return true
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        searchBtn.center = blurEffectView.btnCenter
+    }
     // MARK: UICollectionViewDataSource
     
    
@@ -104,7 +114,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
     
     // MARK: UICollectionViewFlowLayoutDelegate
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        return CGSize(width: 130, height: 130)
+        return CGSize(width: collectionView.frame.width / 3.1, height: collectionView.frame.width / 3.1)
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAtIndex section: Int) -> CGFloat {
@@ -114,5 +124,31 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAtIndex section: Int) -> CGFloat {
         return 5
     }
+    
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "TuneDetails") {
+            _ = segue.destinationViewController.contentViewController.view
+            if let tune = (sender as! iTuneTableViewCell).tune {
+                if let tuneDetailVC = segue.destinationViewController.contentViewController as? DetailViewController {
+                    
+                    tuneDetailVC.artistName.text = tune.artistName
+                    tuneDetailVC.collectionName.text = tune.collectionName
+                    tuneDetailVC.collectionPrice.text = "\(tune.collectionPrice!)"
+                    tuneDetailVC.trackPrice.text = "\(tune.trackPrice!)"
+                    tuneDetailVC.artworkPreviewURL = tune.artworkUrl600
+                
+                }
+            }
+        }
+    }
+}
 
+extension UIViewController {
+    var contentViewController : UIViewController {
+        if let navCon = self as? UINavigationController {
+            return navCon.visibleViewController!
+        } else {
+            return self
+        }
+    }
 }
