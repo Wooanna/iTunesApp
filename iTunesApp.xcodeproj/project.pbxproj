@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		EFA810E91D25191700292B54 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA810E81D25191700292B54 /* DetailViewController.swift */; };
+		EFA810F01D25402600292B54 /* DBManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA810EF1D25402600292B54 /* DBManager.swift */; };
+		EFA810F31D255D9B00292B54 /* FavoriteItem.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EFA810F11D255D9B00292B54 /* FavoriteItem.xcdatamodeld */; };
+		EFA810F61D255E2F00292B54 /* FavoriteTune+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA810F41D255E2F00292B54 /* FavoriteTune+CoreDataProperties.swift */; };
+		EFA810F71D255E2F00292B54 /* FavoriteTune.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFA810F51D255E2F00292B54 /* FavoriteTune.swift */; };
 		EFE9FDA71D21558700A0BFD8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE9FDA61D21558700A0BFD8 /* AppDelegate.swift */; };
 		EFE9FDAC1D21558700A0BFD8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFE9FDAA1D21558700A0BFD8 /* Main.storyboard */; };
 		EFE9FDAE1D21558700A0BFD8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFE9FDAD1D21558700A0BFD8 /* Assets.xcassets */; };
@@ -40,6 +44,10 @@
 
 /* Begin PBXFileReference section */
 		EFA810E81D25191700292B54 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		EFA810EF1D25402600292B54 /* DBManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DBManager.swift; sourceTree = "<group>"; };
+		EFA810F21D255D9B00292B54 /* FavoriteItem.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteItem.xcdatamodel; sourceTree = "<group>"; };
+		EFA810F41D255E2F00292B54 /* FavoriteTune+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "FavoriteTune+CoreDataProperties.swift"; path = "../FavoriteTune+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		EFA810F51D255E2F00292B54 /* FavoriteTune.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoriteTune.swift; path = ../FavoriteTune.swift; sourceTree = "<group>"; };
 		EFE9FDA31D21558700A0BFD8 /* iTunesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFE9FDA61D21558700A0BFD8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EFE9FDAB1D21558700A0BFD8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -84,6 +92,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EFA810EE1D25400C00292B54 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EFA810F41D255E2F00292B54 /* FavoriteTune+CoreDataProperties.swift */,
+				EFA810F51D255E2F00292B54 /* FavoriteTune.swift */,
+				EFA810EF1D25402600292B54 /* DBManager.swift */,
+				EFA810F11D255D9B00292B54 /* FavoriteItem.xcdatamodeld */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		EFE9FD9A1D21558700A0BFD8 = {
 			isa = PBXGroup;
 			children = (
@@ -107,6 +126,7 @@
 		EFE9FDA51D21558700A0BFD8 /* iTunesApp */ = {
 			isa = PBXGroup;
 			children = (
+				EFA810EE1D25400C00292B54 /* Models */,
 				EFE9FDD91D2167CF00A0BFD8 /* iTunes */,
 				EFE9FDD61D215A1B00A0BFD8 /* Others */,
 				EFE9FDD51D215A0000A0BFD8 /* Controllers */,
@@ -306,8 +326,12 @@
 				EFE9FDD81D215E4C00A0BFD8 /* SearchViewController.swift in Sources */,
 				EFE9FDDB1D2167E800A0BFD8 /* iTunesRequest.swift in Sources */,
 				EFE9FDA71D21558700A0BFD8 /* AppDelegate.swift in Sources */,
+				EFA810F31D255D9B00292B54 /* FavoriteItem.xcdatamodeld in Sources */,
+				EFA810F01D25402600292B54 /* DBManager.swift in Sources */,
 				EFE9FDDD1D22805900A0BFD8 /* iTune.swift in Sources */,
 				EFE9FDDF1D2293F700A0BFD8 /* iTuneTableViewCell.swift in Sources */,
+				EFA810F61D255E2F00292B54 /* FavoriteTune+CoreDataProperties.swift in Sources */,
+				EFA810F71D255E2F00292B54 /* FavoriteTune.swift in Sources */,
 				EFE9FDE11D23D3F600A0BFD8 /* BlurView.swift in Sources */,
 				EFA810E91D25191700292B54 /* DetailViewController.swift in Sources */,
 			);
@@ -557,6 +581,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		EFA810F11D255D9B00292B54 /* FavoriteItem.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				EFA810F21D255D9B00292B54 /* FavoriteItem.xcdatamodel */,
+			);
+			currentVersion = EFA810F21D255D9B00292B54 /* FavoriteItem.xcdatamodel */;
+			path = FavoriteItem.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = EFE9FD9B1D21558700A0BFD8 /* Project object */;
 }

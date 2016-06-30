@@ -11,7 +11,7 @@ import UIKit
 class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     var iTunes = [iTune]()
-    var searchText : String? = "Search text" {
+    var searchText :String? = "Search text" {
         didSet {
             searchInput?.text = searchText
         }
@@ -61,7 +61,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
                         self.iTunes = fetchedTunes
                         self.resultsCollection.reloadData()
                     }
-                    
                 })
             }
         }
@@ -73,7 +72,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
         self.blurEffectView = BlurView(effect: blurEffect, frame: frame)
        
         view.insertSubview(blurEffectView, atIndex: 1)
-        
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
@@ -88,9 +86,9 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
         super.viewWillLayoutSubviews()
         searchBtn.center = blurEffectView.btnCenter
     }
+    
     // MARK: UICollectionViewDataSource
     
-   
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -106,13 +104,13 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! iTuneTableViewCell
-        //cell configuration
         cell.tune = iTunes[indexPath.row]
         return cell
 
     }
     
     // MARK: UICollectionViewFlowLayoutDelegate
+    
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 3.1, height: collectionView.frame.width / 3.1)
     }
@@ -130,7 +128,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
             _ = segue.destinationViewController.contentViewController.view
             if let tune = (sender as! iTuneTableViewCell).tune {
                 if let tuneDetailVC = segue.destinationViewController.contentViewController as? DetailViewController {
-                    
+                    tuneDetailVC.tune = tune
                     tuneDetailVC.artistName.text = tune.artistName
                     tuneDetailVC.collectionName.text = tune.collectionName
                     tuneDetailVC.collectionPrice.text = "\(tune.collectionPrice!)"

@@ -24,5 +24,6 @@ public class iTune: NSObject {
     public var trackPrice : Double?
     public var country : String?
     public var genre: String?
+    public var trackID: String?
 
 }

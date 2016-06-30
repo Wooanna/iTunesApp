@@ -181,6 +181,7 @@
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gtn-Yo-qkx">
                                 <rect key="frame" x="20" y="270" width="50" height="50"/>
+                                <gestureRecognizers/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -215,6 +216,7 @@
                         <outlet property="artworkPreview" destination="ivG-8y-XEd" id="Jp6-YC-BPz"/>
                         <outlet property="collectionName" destination="tzR-Wy-V9L" id="vqu-F9-TlN"/>
                         <outlet property="collectionPrice" destination="cI1-YC-ZyQ" id="H2g-kc-gNE"/>
+                        <outlet property="favIcon" destination="gtn-Yo-qkx" id="E4W-wS-jDb"/>
                         <outlet property="trackPrice" destination="lbH-34-xXf" id="Rj6-L2-uGN"/>
                     </connections>
                 </viewController>

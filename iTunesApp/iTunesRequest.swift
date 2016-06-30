@@ -38,6 +38,7 @@ public class iTunesRequest: NSObject, NSURLSessionDelegate {
         static let ArtworkURL = "artworkUrl100"
         static let CollectionPrice = "collectionPrice"
         static let TrackPrice = "trackPrice"
+        static let TrackId = "trackId"
     }
 
     func performRequest(handler: ([iTune]) -> Void) {
@@ -61,7 +62,6 @@ public class iTunesRequest: NSObject, NSURLSessionDelegate {
 
         })
         dataTask?.resume()
-        
     }
     
     func fetchTunes(data : NSData, handler: ([iTune]) -> Void) {
@@ -81,6 +81,7 @@ public class iTunesRequest: NSObject, NSURLSessionDelegate {
                     if let trackPrice = result[iTunesKey.TrackPrice] as? Double {
                         tune.trackPrice = trackPrice
                     }
+                    
                     tunesArray.append(tune)
                 }
             }
@@ -88,7 +89,6 @@ public class iTunesRequest: NSObject, NSURLSessionDelegate {
         } catch {
             print(error)
         }
-
     }
     
     func requestURL() -> NSURL {
