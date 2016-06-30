@@ -13,6 +13,7 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
 
     let like = UIImage(named: "like")
     let likeFilled = UIImage(named: "likeFilled")
+    let mask = CAGradientLayer()
     var tune : iTune? {
         didSet {
             if let artworkURL = tune?.artworkUrl?.absoluteString {
@@ -66,7 +67,16 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
         }
     }
     
-    @IBOutlet weak var artworkPreview: UIImageView!
+    @IBOutlet weak var artworkPreview: UIImageView! {
+        didSet {
+            
+            let colors = [UIColor.clearColor().CGColor, UIColor.blackColor().CGColor]
+            mask.colors = colors
+            mask.startPoint = CGPoint(x: 0.0, y: 1)
+            mask.endPoint = CGPoint(x: 0.0, y: 0.7)
+            artworkPreview.layer.mask = mask
+        }
+    }
     
     @IBOutlet weak var trackPrice: UILabel! {
         didSet {
@@ -110,6 +120,12 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
         view.insertSubview(blurEffectView, atIndex: 1)
     }
     
+    public override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        mask.frame = artworkPreview.bounds
+
+        
+    }
     //MARK: Data base manage
     
     let moc = DBManager().managedObjectContext

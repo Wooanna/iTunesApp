@@ -40,6 +40,7 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
     
     var blurEffectView : BlurView! = nil
     
+    //MARK: App lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         let bgImageView = UIImageView(frame: self.view.frame)
@@ -49,6 +50,10 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
        
         resultsCollection.backgroundColor = UIColor.clearColor()
         blurEffect()
+    }
+    
+     override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
     }
     
     @IBAction func search(sender: AnyObject) {
@@ -62,6 +67,22 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
                         self.resultsCollection.reloadData()
                     }
                 })
+            }
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if(segue.identifier == "TuneDetails") {
+            _ = segue.destinationViewController.contentViewController.view
+            if let tune = (sender as! iTuneTableViewCell).tune {
+                if let tuneDetailVC = segue.destinationViewController.contentViewController as? DetailViewController {
+                    tuneDetailVC.tune = tune
+                    tuneDetailVC.artistName.text = tune.artistName
+                    tuneDetailVC.collectionName.text = tune.collectionName
+                    tuneDetailVC.collectionPrice.text = "\(tune.collectionPrice!)"
+                    tuneDetailVC.trackPrice.text = "\(tune.trackPrice!)"
+                    tuneDetailVC.artworkPreviewURL = tune.artworkUrl600
+                }
             }
         }
     }
@@ -80,11 +101,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
             searchText = textField.text!
         }
         return true
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        searchBtn.center = blurEffectView.btnCenter
     }
     
     // MARK: UICollectionViewDataSource
@@ -106,7 +122,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! iTuneTableViewCell
         cell.tune = iTunes[indexPath.row]
         return cell
-
     }
     
     // MARK: UICollectionViewFlowLayoutDelegate
@@ -123,22 +138,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
         return 5
     }
     
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if(segue.identifier == "TuneDetails") {
-            _ = segue.destinationViewController.contentViewController.view
-            if let tune = (sender as! iTuneTableViewCell).tune {
-                if let tuneDetailVC = segue.destinationViewController.contentViewController as? DetailViewController {
-                    tuneDetailVC.tune = tune
-                    tuneDetailVC.artistName.text = tune.artistName
-                    tuneDetailVC.collectionName.text = tune.collectionName
-                    tuneDetailVC.collectionPrice.text = "\(tune.collectionPrice!)"
-                    tuneDetailVC.trackPrice.text = "\(tune.trackPrice!)"
-                    tuneDetailVC.artworkPreviewURL = tune.artworkUrl600
-                
-                }
-            }
-        }
-    }
 }
 
 extension UIViewController {
