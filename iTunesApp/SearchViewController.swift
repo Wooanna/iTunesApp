@@ -131,7 +131,6 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
         static let CellReuseIdentifier = "iTuneCell"
     }
     
-    
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
                let cell = collectionView.dequeueReusableCellWithReuseIdentifier(Storyboard.CellReuseIdentifier, forIndexPath: indexPath) as! iTuneTableViewCell
         cell.tune = iTunes[indexPath.row]

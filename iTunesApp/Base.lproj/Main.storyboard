@@ -40,8 +40,11 @@
                                             <rect key="frame" x="0.0" y="0.0" width="196" height="121"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrackPrice" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Nj5-xv-f8G">
-                                                    <rect key="frame" x="96" y="8" width="92" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="TrackPrice" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Nj5-xv-f8G">
+                                                    <rect key="frame" x="96" y="8" width="92" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="I0L-Vq-1an"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -59,30 +62,40 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="AlbumPrice" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Tcj-Jf-LJC">
-                                                    <rect key="frame" x="96" y="44" width="92" height="21"/>
+                                                    <rect key="frame" x="96" y="45" width="92" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="qTN-za-KNg">
+                                                    <rect key="frame" x="98" y="72" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="qTN-za-KNg" secondAttribute="height" multiplier="1:1" id="8Lm-vC-VcA"/>
+                                                        <constraint firstAttribute="width" constant="20" id="m4z-Rr-wZo"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="tmR-0f-luA" firstAttribute="trailing" secondItem="qRr-4n-Xdz" secondAttribute="trailingMargin" id="6cA-0q-wav"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Tcj-Jf-LJC" secondAttribute="trailing" constant="25" id="6oQ-KY-F3h"/>
-                                            <constraint firstItem="Nj5-xv-f8G" firstAttribute="trailing" secondItem="Tcj-Jf-LJC" secondAttribute="trailing" id="GNm-ie-FSi"/>
+                                            <constraint firstItem="tmR-0f-luA" firstAttribute="top" secondItem="qTN-za-KNg" secondAttribute="bottom" id="6vE-lo-AB7"/>
+                                            <constraint firstItem="qTN-za-KNg" firstAttribute="top" secondItem="Tcj-Jf-LJC" secondAttribute="bottom" constant="6" id="DIc-qr-hlM"/>
                                             <constraint firstItem="tmR-0f-luA" firstAttribute="top" secondItem="4V9-ip-cIf" secondAttribute="bottom" constant="4" id="Ho3-WP-b8Y"/>
+                                            <constraint firstItem="Nj5-xv-f8G" firstAttribute="trailing" secondItem="Tcj-Jf-LJC" secondAttribute="trailing" id="JNl-Cu-e86"/>
+                                            <constraint firstItem="Nj5-xv-f8G" firstAttribute="leading" secondItem="Tcj-Jf-LJC" secondAttribute="leading" id="JRz-dV-Iff"/>
+                                            <constraint firstItem="Tcj-Jf-LJC" firstAttribute="top" secondItem="Nj5-xv-f8G" secondAttribute="bottom" constant="15" id="OUe-ay-ZHH"/>
+                                            <constraint firstItem="qTN-za-KNg" firstAttribute="leading" secondItem="4V9-ip-cIf" secondAttribute="trailing" constant="10" id="Org-2n-aiZ"/>
                                             <constraint firstItem="tmR-0f-luA" firstAttribute="leading" secondItem="4V9-ip-cIf" secondAttribute="leading" id="Rhg-Pv-4IE"/>
                                             <constraint firstItem="tmR-0f-luA" firstAttribute="trailing" secondItem="Tcj-Jf-LJC" secondAttribute="trailing" id="SWu-EU-b6f"/>
                                             <constraint firstItem="Nj5-xv-f8G" firstAttribute="trailing" secondItem="tmR-0f-luA" secondAttribute="trailing" id="XLX-rr-mgT"/>
-                                            <constraint firstItem="Nj5-xv-f8G" firstAttribute="trailing" secondItem="qRr-4n-Xdz" secondAttribute="trailingMargin" id="Zoc-0f-aXf"/>
+                                            <constraint firstItem="Nj5-xv-f8G" firstAttribute="top" secondItem="4V9-ip-cIf" secondAttribute="top" id="YRx-4p-0Vz"/>
                                             <constraint firstAttribute="leadingMargin" secondItem="4V9-ip-cIf" secondAttribute="leading" id="bJJ-ZD-ze6"/>
                                             <constraint firstItem="Tcj-Jf-LJC" firstAttribute="leading" secondItem="4V9-ip-cIf" secondAttribute="trailing" constant="8" id="eNM-QR-CfP"/>
-                                            <constraint firstItem="Tcj-Jf-LJC" firstAttribute="top" secondItem="Nj5-xv-f8G" secondAttribute="bottom" constant="15" id="fNG-cX-jPh"/>
                                             <constraint firstAttribute="topMargin" secondItem="4V9-ip-cIf" secondAttribute="top" id="fUO-oT-l1S"/>
-                                            <constraint firstItem="Nj5-xv-f8G" firstAttribute="leading" secondItem="Tcj-Jf-LJC" secondAttribute="leading" id="j3D-l2-TXI"/>
                                             <constraint firstItem="Nj5-xv-f8G" firstAttribute="trailing" secondItem="Tcj-Jf-LJC" secondAttribute="trailing" id="lpX-Pi-o3L"/>
-                                            <constraint firstItem="Nj5-xv-f8G" firstAttribute="top" secondItem="4V9-ip-cIf" secondAttribute="top" id="ns6-27-jSP"/>
+                                            <constraint firstItem="Nj5-xv-f8G" firstAttribute="trailing" secondItem="qRr-4n-Xdz" secondAttribute="trailingMargin" id="qu4-Pt-bu4"/>
                                             <constraint firstItem="tmR-0f-luA" firstAttribute="bottom" secondItem="qRr-4n-Xdz" secondAttribute="bottomMargin" id="w9N-Kd-cPw"/>
                                         </constraints>
                                         <variation key="default">
@@ -95,6 +108,7 @@
                                         </variation>
                                         <connections>
                                             <outlet property="albumPrice" destination="Tcj-Jf-LJC" id="wIu-Hg-mFq"/>
+                                            <outlet property="favIcon" destination="qTN-za-KNg" id="Cdd-Pf-aIY"/>
                                             <outlet property="preview" destination="4V9-ip-cIf" id="Mvc-hc-Dj3"/>
                                             <outlet property="titleLabel" destination="tmR-0f-luA" id="xCo-yp-BLm"/>
                                             <outlet property="trackPrice" destination="Nj5-xv-f8G" id="KBS-Uz-pZT"/>

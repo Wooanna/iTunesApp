@@ -14,6 +14,8 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
     let like = UIImage(named: "like")
     let likeFilled = UIImage(named: "likeFilled")
     let mask = CAGradientLayer()
+    var bgImage = UIImageView()
+    
     var tune : iTune? {
         didSet {
             if let artworkURL = tune?.artworkUrl?.absoluteString {
@@ -56,6 +58,7 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
                 if let imageData = NSData(contentsOfURL: self.artworkPreviewURL) {
                     dispatch_async(dispatch_get_main_queue(), { () -> Void in
                         self.artworkPreview.image = UIImage(data: imageData)
+                        self.bgImage.image = UIImage(data: imageData)
                     })
                 }
             })
@@ -73,7 +76,6 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
     
     @IBOutlet weak var artworkPreview: UIImageView! {
         didSet {
-            
             let colors = [UIColor.clearColor().CGColor, UIColor.blackColor().CGColor]
             mask.colors = colors
             mask.startPoint = CGPoint(x: 0.0, y: 1)
@@ -113,7 +115,7 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
     // MARK: App lifecycle
     
     public override func viewDidLoad() {
-        let bgImage = UIImageView(frame: self.view.frame)
+        bgImage = UIImageView(frame: self.view.frame)
         bgImage.image = UIImage(named: "mesh2")
         bgImage.contentMode = .ScaleAspectFill
         self.view.insertSubview(bgImage, atIndex: 0)
@@ -127,35 +129,40 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
     public override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         mask.frame = artworkPreview.bounds
-
-        
+  
     }
     //MARK: Data base manage
+    
+    private struct DBMConstants {
+        static let FavoriteTune = "FavoriteTune"
+        static let FetchFail = "failier to fetch itemID"
+        static let SaveFail = "failed to save itemID"
+        static let DeleteFail = "failed to delete itemID"
+    }
     
     let moc = DBManager().managedObjectContext
     
     func exists(itemID: String) -> (exists: Bool, tune: FavoriteTune?){
-        let favoriteFetch = NSFetchRequest(entityName: "FavoriteTune")
+        let favoriteFetch = NSFetchRequest(entityName: DBMConstants.FavoriteTune)
         do {
             let fetchedFavorite = try moc.executeFetchRequest(favoriteFetch) as! [FavoriteTune]
-            print(fetchedFavorite)
             if let found = fetchedFavorite.indexOf({$0.itemid! == itemID})  {
                 return (true, fetchedFavorite[found])
             } else {
                 return (false, nil)
             }
         } catch {
-            fatalError("failier to fetch itemID")
+            fatalError(DBMConstants.FetchFail)
         }
     }
     
     func seedFavoritesWithID(itemID: String) {
-        let entity = NSEntityDescription.insertNewObjectForEntityForName("FavoriteTune", inManagedObjectContext: moc) as! FavoriteTune
+        let entity = NSEntityDescription.insertNewObjectForEntityForName(DBMConstants.FavoriteTune, inManagedObjectContext: moc) as! FavoriteTune
         entity.setValue(itemID, forKey: "itemid")
         do {
             try moc.save()
         } catch {
-            fatalError("failier to save itemID")
+            fatalError(DBMConstants.SaveFail)
         }
     }
     
@@ -164,18 +171,18 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
         do {
         try moc.save()
         } catch {
-            fatalError("failier to delete itemID")
+            fatalError(DBMConstants.DeleteFail)
         }
     }
     
     func deleteAll() {
-        let fetchRequest = NSFetchRequest(entityName: "FavoriteTune")
+        let fetchRequest = NSFetchRequest(entityName: DBMConstants.FavoriteTune)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         
         do {
             try moc.executeRequest(deleteRequest)
         } catch  {
-            // TODO: handle the error
+            fatalError(DBMConstants.DeleteFail)
         }
     }
 }

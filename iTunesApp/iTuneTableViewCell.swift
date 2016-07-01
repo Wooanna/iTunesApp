@@ -9,13 +9,12 @@
 import UIKit
 
 class iTuneTableViewCell: UICollectionViewCell {
-    
 
     @IBOutlet weak var trackPrice: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var albumPrice: UILabel!
     @IBOutlet weak var preview: UIImageView!
-    
+    @IBOutlet weak var favIcon: UIImageView!
     
     var tune : iTune? {
         didSet {
@@ -45,6 +44,12 @@ class iTuneTableViewCell: UICollectionViewCell {
             
             if let albumPrice = tune.collectionPrice {
                 self.albumPrice.text = "\(albumPrice)"
+            }
+            
+            if(tune.isFav) {
+                favIcon.image = UIImage(named: "likeFilled")
+            } else {
+                favIcon.image = UIImage(named: "like")
             }
             
             if let artworkURL = self.tune?.artworkUrl {

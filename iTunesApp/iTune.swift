@@ -26,7 +26,5 @@ public class iTune: NSObject {
     public var genre: String?
     public var trackID: String?
     public var currency: String?
-    public var isFav : Bool!
-
-
+    public var isFav = false
 }
