@@ -45,6 +45,8 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
         }
     }
     
+    @IBOutlet weak var kind: UILabel!
+    @IBOutlet weak var genre: UILabel!
     @IBOutlet weak var country: UILabel!
     
     public var artworkPreviewURL : NSURL! {
@@ -112,7 +114,7 @@ public class DetailViewController: UIViewController, UIGestureRecognizerDelegate
     
     public override func viewDidLoad() {
         let bgImage = UIImageView(frame: self.view.frame)
-        bgImage.image = UIImage(named: "mesh1")
+        bgImage.image = UIImage(named: "mesh2")
         bgImage.contentMode = .ScaleAspectFill
         self.view.insertSubview(bgImage, atIndex: 0)
         

@@ -77,11 +77,25 @@ class SearchViewController: UIViewController, UITextFieldDelegate, UICollectionV
             if let tune = (sender as! iTuneTableViewCell).tune {
                 if let tuneDetailVC = segue.destinationViewController.contentViewController as? DetailViewController {
                     tuneDetailVC.tune = tune
-                    tuneDetailVC.artistName.text = tune.artistName
-                    tuneDetailVC.collectionName.text = tune.collectionName
-                    tuneDetailVC.collectionPrice.text = "\(tune.collectionPrice!)\(tune.currency!)"
-                    tuneDetailVC.trackPrice.text = "\(tune.trackPrice!)\(tune.currency!)"
+                    if let artistName = tune.artistName {
+                        tuneDetailVC.artistName.text = "By: \(artistName)"
+                    } else {
+                        tuneDetailVC.artistName.text = "By: unknown"
+                    }
+                    
+                    if let collectionName = tune.collectionName {
+                        tuneDetailVC.collectionName.text = "Album: \(collectionName)"
+                    } else {
+                        tuneDetailVC.collectionName.text = "Album: unknown"
+                    }
+                  
+                    tuneDetailVC.collectionPrice.text = "Collection price: \(tune.collectionPrice!)\(tune.currency!)"
+                    tuneDetailVC.trackPrice.text = "Track price: \(tune.trackPrice!)\(tune.currency!)"
                     tuneDetailVC.artworkPreviewURL = tune.artworkUrl600
+                    tuneDetailVC.country.text = tune.country
+                    tuneDetailVC.genre.text = tune.genre
+                    tuneDetailVC.kind.text = tune.kind
+                  
                 }
             }
         }

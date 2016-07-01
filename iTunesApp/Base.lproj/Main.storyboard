@@ -162,25 +162,25 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Collection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tzR-Wy-V9L">
                                 <rect key="frame" x="20" y="351" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Artist" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7Y-a5-evS">
                                 <rect key="frame" x="20" y="380" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cI1-YC-ZyQ">
                                 <rect key="frame" x="20" y="409" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TrackPrice" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lbH-34-xXf">
                                 <rect key="frame" x="20" y="438" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gtn-Yo-qkx">
@@ -195,7 +195,19 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E5f-eA-8tu">
                                 <rect key="frame" x="20" y="467" width="560" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Genre" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N4L-dW-Jic">
+                                <rect key="frame" x="20" y="525" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kind" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wke-oK-FQg">
+                                <rect key="frame" x="20" y="496" width="560" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -207,6 +219,7 @@
                             <constraint firstItem="ivG-8y-XEd" firstAttribute="top" secondItem="xID-x9-9O1" secondAttribute="bottom" id="6Fx-hJ-UQD"/>
                             <constraint firstAttribute="trailingMargin" secondItem="u7Y-a5-evS" secondAttribute="trailing" id="7mw-He-DvF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lbH-34-xXf" secondAttribute="trailing" id="838-vs-9ym"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="wke-oK-FQg" secondAttribute="trailing" id="BWW-fK-kMy"/>
                             <constraint firstItem="ivG-8y-XEd" firstAttribute="leading" secondItem="bh2-mH-92Y" secondAttribute="leading" id="BsV-F0-0eD"/>
                             <constraint firstItem="tzR-Wy-V9L" firstAttribute="top" secondItem="ivG-8y-XEd" secondAttribute="bottom" constant="15" id="F98-Lc-VPJ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="E5f-eA-8tu" secondAttribute="trailing" id="Fer-4R-MCt"/>
@@ -217,12 +230,17 @@
                             <constraint firstItem="gtn-Yo-qkx" firstAttribute="centerY" secondItem="bh2-mH-92Y" secondAttribute="centerY" id="QWq-51-nHF"/>
                             <constraint firstAttribute="leadingMargin" secondItem="E5f-eA-8tu" secondAttribute="leading" id="RwA-0U-WBt"/>
                             <constraint firstAttribute="trailingMargin" secondItem="tzR-Wy-V9L" secondAttribute="trailing" id="Ss0-FC-ef6"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="N4L-dW-Jic" secondAttribute="trailing" id="ZkS-gQ-ecu"/>
                             <constraint firstAttribute="leadingMargin" secondItem="cI1-YC-ZyQ" secondAttribute="leading" id="arD-xg-8n9"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="wke-oK-FQg" secondAttribute="leading" id="bN2-j9-4Ej"/>
                             <constraint firstItem="ivG-8y-XEd" firstAttribute="centerX" secondItem="tzR-Wy-V9L" secondAttribute="centerX" id="g6c-hP-L0n"/>
                             <constraint firstAttribute="leadingMargin" secondItem="lbH-34-xXf" secondAttribute="leading" id="gkK-YZ-g3b"/>
                             <constraint firstAttribute="leadingMargin" secondItem="u7Y-a5-evS" secondAttribute="leading" id="h0G-5r-SlF"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="N4L-dW-Jic" secondAttribute="leading" id="hht-Jf-AMa"/>
                             <constraint firstAttribute="leadingMargin" secondItem="tzR-Wy-V9L" secondAttribute="leading" id="jcI-tO-VsA"/>
+                            <constraint firstItem="1I8-he-myY" firstAttribute="top" secondItem="N4L-dW-Jic" secondAttribute="bottom" constant="54" id="le4-LV-soA"/>
                             <constraint firstItem="lbH-34-xXf" firstAttribute="top" secondItem="cI1-YC-ZyQ" secondAttribute="bottom" constant="8" id="nk8-oL-HwN"/>
+                            <constraint firstItem="N4L-dW-Jic" firstAttribute="top" secondItem="wke-oK-FQg" secondAttribute="bottom" constant="8" id="rxE-2J-jMG"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ivG-8y-XEd" secondAttribute="trailing" constant="-20" id="sYC-m0-V0W"/>
                             <constraint firstItem="u7Y-a5-evS" firstAttribute="top" secondItem="tzR-Wy-V9L" secondAttribute="bottom" constant="8" id="whd-41-SEu"/>
                             <constraint firstItem="ivG-8y-XEd" firstAttribute="leading" secondItem="bh2-mH-92Y" secondAttribute="leadingMargin" constant="-20" id="y85-hs-Rpa"/>
@@ -250,6 +268,8 @@
                         <outlet property="collectionPrice" destination="cI1-YC-ZyQ" id="H2g-kc-gNE"/>
                         <outlet property="country" destination="E5f-eA-8tu" id="o5g-fW-zEs"/>
                         <outlet property="favIcon" destination="gtn-Yo-qkx" id="E4W-wS-jDb"/>
+                        <outlet property="genre" destination="N4L-dW-Jic" id="Yql-bQ-Y86"/>
+                        <outlet property="kind" destination="wke-oK-FQg" id="4ar-jI-lLl"/>
                         <outlet property="trackPrice" destination="lbH-34-xXf" id="Rj6-L2-uGN"/>
                     </connections>
                 </viewController>

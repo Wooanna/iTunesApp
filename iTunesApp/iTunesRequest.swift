@@ -40,6 +40,8 @@ public class iTunesRequest: NSObject, NSURLSessionDelegate {
         static let TrackPrice = "trackPrice"
         static let TrackId = "trackId"
         static let Currency = "currency"
+        static let Genre = "primaryGenreName"
+        static let Kind = "kind"
     }
 
     func performRequest(handler: ([iTune]) -> Void) {
@@ -86,6 +88,17 @@ public class iTunesRequest: NSObject, NSURLSessionDelegate {
                         tune.currency = currency
                     }
                     
+                    if let country = result[iTunesKey.Country] as? String {
+                        tune.country = country
+                    }
+                    
+                    if let kind = result[iTunesKey.Kind] as? String {
+                        tune.kind = kind
+                    }
+                    
+                    if let genre = result[iTunesKey.Genre] as? String {
+                        tune.genre = genre
+                    }
                     tunesArray.append(tune)
                 }
             }
@@ -107,7 +120,5 @@ public class iTunesRequest: NSObject, NSURLSessionDelegate {
          print(reqURL)
         return reqURL!
         
-    }
-    
-    
+    }  
 }
